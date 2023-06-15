@@ -5,11 +5,3 @@
 body{
   font-family: 'Poppins', sans-serif;
 }
-
-.nav{
-  @apply flex h-screen flex-col p-4 fixed justify-between border-r-gray-400 border-r;
-}
-
-.items{
-  @apply flex flex-col gap-4;
-}
