@@ -24,32 +24,53 @@
         </div>
       </div>
       <div class="flex flex-col px-4 space-y-10">
-        <div class="flex items-center gap-1">
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32"
-            viewBox="0,0,256,256" style="fill:#000000;">
+        <div class="flex items-center gap-1 group item-container">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256"
+            style="fill:#000000;">
             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
               stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
               font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
               <g transform="scale(5.33333,5.33333)">
-                <path
+                <path class="item-icon-dark"
                   d="M20,28h-12c-1.105,0 -2,-0.895 -2,-2v-18c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v18c0,1.105 -0.895,2 -2,2z"
                   fill="#0094ff"></path>
-                <path
+                <path class="item-icon-light"
                   d="M40,16h-12c-1.105,0 -2,-0.895 -2,-2v-6c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v6c0,1.105 -0.895,2 -2,2z"
                   fill="#62bdff"></path>
-                <path
+                <path class="item-icon-light"
                   d="M20,42h-12c-1.105,0 -2,-0.895 -2,-2v-6c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v6c0,1.105 -0.895,2 -2,2z"
                   fill="#62bdff"></path>
-                <path
+                <path class="item-icon-dark"
                   d="M40,42h-12c-1.105,0 -2,-0.895 -2,-2v-18c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v18c0,1.105 -0.895,2 -2,2z"
                   fill="#0094ff"></path>
               </g>
             </g>
           </svg>
-          <a href="/" data-link>Dashboard</a>
+          <div class="flex items-center gap-1">
+            <a href="/" class="active item" data-link>Dashboard</a>
           </div>
-        <a href="/saved" data-link>Saved Locations</a>
-        <a href="/settings" data-link>Settings</a>
+        </div>
+        <div class="flex items-center gap-1 group item-container">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256"
+            style="fill:#000000;">
+            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+              stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+              font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <g transform="scale(2,2)">
+                <path class="item-icon-dark group-hover:fill-neutral-500"
+                  d="M89,30c-13.8,0 -25,11.2 -25,25c0,-13.8 -11.2,-25 -25,-25c-13.8,0 -25,11.2 -25,25c0,27.6 35,56.2 50,56.2c15,0 50,-28.6 50,-56.2c0,-13.8 -11.2,-25 -25,-25z"
+                  fill="#0094ff"></path>
+                <path
+                  d="M26,58c-1.7,0 -3,-1.3 -3,-3c0,-8.8 7.2,-16 16,-16c1.7,0 3,1.3 3,3c0,1.7 -1.3,3 -3,3c-5.5,0 -10,4.5 -10,10c0,1.7 -1.3,3 -3,3z"
+                  fill="#ffffff"></path>
+              </g>
+            </g>
+          </svg>
+          <a href="/saved" class="item" data-link>Saved Locations</a>
+        </div>
+        <div class="flex items-center gap-1 group">
+          <a href="/settings" class="item" data-link>Settings</a>
+        </div>
       </div>
     </div>
     <div>
