@@ -12,6 +12,14 @@
   <body class="h-full flex">
     <div class="nav">
       <div class="items">
+        <div id="logo" class="flex items-center gap-2">
+          <div class="h-16 w-16 -mb-4 -mx-4">
+            <img src="src/assets/logo.png" alt="logo">
+          </div>
+          <div class="bg-clip-text pb-2 text-xl text-transparent font-bold bg-gradient-to-br from-[#62BDFF] to-[#0094FF]">
+            the.weather
+          </div>
+        </div>
         <a href="/" data-link>Dashboard</a>
         <a href="/saved" data-link>Saved Locations</a>
         <a href="/settings" data-link>Settings</a>
@@ -20,7 +28,7 @@
         <a href="#">Logout</a>
       </div>
     </div>
-    <div class="ml-48" id="app"></div>
+    <div class="ml-52" id="app"></div>
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
