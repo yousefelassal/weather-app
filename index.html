@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-neutral-50">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-  </head>
-  <body class="h-full flex">
-    <div id="nav" class="flex h-screen flex-col p-4 fixed justify-between w-60 border-r-gray-200 border-r">
-      <div class="flex flex-col gap-4">
-        <div id="logo" class="flex items-center mt-6">
-          <div class="h-16 w-16">
-            <img src="src/assets/logo.png" alt="logo">
-          </div>
-          <div class="bg-clip-text pb-6 text-xl -ml-2 text-transparent font-bold bg-gradient-to-br from-[#62BDFF] to-[#0094FF]">
-            the.weather
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+</head>
+
+<body class="h-full flex">
+  <div id="nav" class="flex h-screen flex-col z-10 p-4 fixed justify-between w-60 border-r-gray-200 border-r">
+    <div class="flex flex-col gap-4">
+      <div id="logo" class="flex items-center mt-6">
+        <div class="h-16 w-16">
+          <img src="src/assets/logo.png" alt="logo">
         </div>
-        <div class="flex flex-col px-4 space-y-10">
-          <a href="/" data-link>Dashboard</a>
-          <a href="/saved" data-link>Saved Locations</a>
-          <a href="/settings" data-link>Settings</a>
+        <div
+          class="bg-clip-text pb-6 text-xl -ml-2 text-transparent font-bold bg-gradient-to-br from-[#62BDFF] to-[#0094FF]">
+          the.weather
         </div>
       </div>
-      <div>
-        <a class="px-4" href="#">Logout</a>
+      <div class="flex flex-col px-4 space-y-10">
+        <div class="flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32"
+            viewBox="0,0,256,256" style="fill:#000000;">
+            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+              stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+              font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <g transform="scale(5.33333,5.33333)">
+                <path
+                  d="M20,28h-12c-1.105,0 -2,-0.895 -2,-2v-18c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v18c0,1.105 -0.895,2 -2,2z"
+                  fill="#0094ff"></path>
+                <path
+                  d="M40,16h-12c-1.105,0 -2,-0.895 -2,-2v-6c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v6c0,1.105 -0.895,2 -2,2z"
+                  fill="#62bdff"></path>
+                <path
+                  d="M20,42h-12c-1.105,0 -2,-0.895 -2,-2v-6c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v6c0,1.105 -0.895,2 -2,2z"
+                  fill="#62bdff"></path>
+                <path
+                  d="M40,42h-12c-1.105,0 -2,-0.895 -2,-2v-18c0,-1.105 0.895,-2 2,-2h12c1.105,0 2,0.895 2,2v18c0,1.105 -0.895,2 -2,2z"
+                  fill="#0094ff"></path>
+              </g>
+            </g>
+          </svg>
+          <a href="/" data-link>Dashboard</a>
+          </div>
+        <a href="/saved" data-link>Saved Locations</a>
+        <a href="/settings" data-link>Settings</a>
       </div>
     </div>
-    <div class="ml-64" id="app"></div>
-    <script type="module" src="src/main.js"></script>
-  </body>
+    <div>
+      <a class="px-4" href="#">Logout</a>
+    </div>
+  </div>
+  <div class="ml-64" id="app"></div>
+  <script type="module" src="src/main.js"></script>
+</body>
+
 </html>
