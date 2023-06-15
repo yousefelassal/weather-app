@@ -1,6 +1,6 @@
 import './style.css'
 import Dashboard from './views/Dashboard.js';
-import Service from './views/Service.js';
+import Saved from './views/Saved.js';
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -10,7 +10,7 @@ const navigateTo = (url) => {
 const router = async () => {
   const routes = [
       {path: "/", view: Dashboard},
-      {path: "/service", view: Service},
+      {path: "/saved", view: Saved},
   ];
 
   const potentialMatches = routes.map((route) => {
