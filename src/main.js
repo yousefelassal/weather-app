@@ -1,28 +1,50 @@
 import './style.css'
-import javascriptLogo from '../javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import Dashboard from './views/Dashboard.js';
+import Service from './views/Service.js';
 
-document.querySelector('#app').innerHTML = `
-<div class="flex flex-col place-items-center">
-  <div class="flex">
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    </div>
-    <div class="flex flex-col">
-    <h1 class="text-6xl font-bold underline text-neutral-600">Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-    </div>
-  </div>
-`
+const navigateTo = (url) => {
+  history.pushState(null, null, url);
+  router();
+};
 
-setupCounter(document.querySelector('#counter'))
+const router = async () => {
+  const routes = [
+      {path: "/", view: Dashboard},
+      {path: "/service", view: Service},
+  ];
+
+  const potentialMatches = routes.map((route) => {
+      return {
+          route: route,
+          isMatch: location.pathname === route.path,
+      }
+  });
+
+  let match = potentialMatches.find((potentialMatch) => potentialMatch.isMatch);
+
+  if (!match) {
+      match = {
+          route: {view: Four0Four},
+          isMatch: true,
+      };
+  };
+
+  const view = new match.route.view();
+
+  document.querySelector("#app").innerHTML = await view.getHtml();
+  await view.getJs();
+
+};
+
+window.addEventListener("popstate", router);
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.addEventListener("click", (event) => {
+      if (event.target.matches("[data-link]")) {
+          event.preventDefault();
+          navigateTo(event.target.href);
+      }
+  });
+
+  router();
+});
