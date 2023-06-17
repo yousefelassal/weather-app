@@ -38,3 +38,11 @@ body{
 .item-icon-light{
   @apply fill-[#d3d3d3] transition-colors duration-100;
 }
+
+.item-container:has(.item:hover) .item-icon-dark{
+  @apply fill-neutral-500;
+}
+
+.item-container:has(.item:hover) .item-icon-light{
+  @apply fill-neutral-400;
+}
