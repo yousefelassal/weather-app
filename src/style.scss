@@ -1,3 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.e404{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+  width:100vw;
+  height:100vh;
+}
+
+.item{
+  @apply text-gray-400 hover:text-neutral-950;
+}
+
+.item.active{
+  @apply text-neutral-950 font-semibold;
+}
+
+.item-container:has(.item.active) .item-icon-dark{
+  @apply fill-[#0094ff] transition-colors duration-100;
+}
+
+.item-icon-dark{
+  @apply fill-[#b3b3b3] transition-colors duration-100;
+}
+
+.item-container:has(.item.active) .item-icon-light{
+  @apply fill-[#62bdff] transition-colors duration-100;
+}
+
+.item-icon-light{
+  @apply fill-[#d3d3d3] transition-colors duration-100;
+}
+
+.item-container:has(.item:hover) .item-icon-dark{
+  @apply fill-neutral-500;
+}
+
+.item-container:has(.item:hover) .item-icon-light{
+  @apply fill-neutral-400;
+}
+
+.item-container:has(.item.active:hover) .item-icon-dark{
+  @apply fill-[#0094ff];
+}
+
+.item-container:has(.item.active:hover) .item-icon-light{
+  @apply fill-[#62bdff];
+}
+
 $primary-color: #4d59b5;
 
 h1{
