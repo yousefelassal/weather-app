@@ -1,4 +1,5 @@
 import './style.css'
+import './style.scss'
 import Dashboard from './views/Dashboard.js';
 import Saved from './views/Saved.js';
 import Four0Four from './views/Four0Four.js';
