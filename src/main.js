@@ -2,6 +2,7 @@ import './style.css'
 import Dashboard from './views/Dashboard.js';
 import Saved from './views/Saved.js';
 import Four0Four from './views/Four0Four.js';
+import Settings from './views/Settings.js';
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -12,6 +13,7 @@ const router = async () => {
   const routes = [
       {path: "/", view: Dashboard},
       {path: "/saved", view: Saved},
+      {path: "/settings", view: Settings},
   ];
 
   const potentialMatches = routes.map((route) => {
