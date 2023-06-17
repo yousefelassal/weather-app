@@ -46,3 +46,11 @@ body{
 .item-container:has(.item:hover) .item-icon-light{
   @apply fill-neutral-400;
 }
+
+.item-container:has(.item.active:hover) .item-icon-dark{
+  @apply fill-[#0094ff];
+}
+
+.item-container:has(.item.active:hover) .item-icon-light{
+  @apply fill-[#62bdff];
+}
