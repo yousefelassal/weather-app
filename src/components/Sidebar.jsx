@@ -81,15 +81,20 @@ const Sidebar = () => {
                         </NavLink>
                     </div>
                     <div className="flex-1 flex flex-col h-full overflow-auto">
-                        <ul className="px-4 text-sm font-medium flex-1">
+                        <ul className="px-4 flex flex-col gap-2 text-sm font-medium flex-1">
                             {
                                 navigation.map((item, idx) => (
                                     <li key={idx}>
-                                        <NavLink to={item.to} className={({isActive, isPending}) => isActive ? "bg-blue-400 flex text-white items-center gap-x-2 p-2 rounded-lg" : isPending ? "text-blue-400 flex items-center gap-x-2 p-2 rounded-lg" : "flex items-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150"}>
-                                            <div className={({isActive, isPending }) => isActive ? "text-white" : isPending ? "text-blue-400" : "text-gray-500"}>{item.icon}</div>
-                                            {item.name}
-                                            {({isActive}) => isActive && <motion.div layoutId="underline" className="bg-blue-400 underline flex rounded-r-lg" >
-                                            </motion.div>}
+                                        <NavLink to={item.to}>
+                                            {({isActive}) => isActive ? <motion.div layoutId="indicator" className="bg-blue-400 flex text-white items-center gap-x-2 p-2 rounded-lg" >
+                                                <div>{item.icon}</div>
+                                                {item.name}
+                                            </motion.div>
+                                            :
+                                            <div className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150">
+                                                <div className={({ isPending }) => isPending ? "text-blue-400" : "text-gray-500"}>{item.icon}</div>
+                                                {item.name}
+                                            </div>}
                                         </NavLink>
                                     </li>
                                 ))
