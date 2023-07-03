@@ -6,7 +6,9 @@ const App = () => {
   return (
     <>
       <Sidebar />
-      <Outlet />
+      <div className="ml-64 px-4">
+        <Outlet />
+      </div>
     </>
   );
 };
