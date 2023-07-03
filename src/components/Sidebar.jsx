@@ -86,10 +86,10 @@ const Sidebar = () => {
                                 navigation.map((item, idx) => (
                                     <li key={idx} className ="relative">
                                         <NavLink to={item.to}>
-                                            {({isActive}) => isActive ? <div className="flex items-center gap-x-2 p-2">
+                                            {({isActive}) => isActive ? <div className="flex items-center gap-x-2 p-2 text-white transition-colors delay-75 duration-[50ms] rounded-lg">
                                                 <div className="z-10">{item.icon}</div>
                                                 <div className="z-10">{item.name}</div>
-                                                <motion.div layoutId="indicator" className="bg-blue-400 rounded-lg absolute w-56 h-9 top-0 left-0 z-[1]" />
+                                                <motion.div layoutId="indicator" className="bg-blue-400 rounded-lg absolute w-[13.975rem] h-9 top-0 left-0 z-[1]" />
                                             </div>
                                             :
                                             <div className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150">
