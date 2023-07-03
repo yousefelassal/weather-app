@@ -84,12 +84,13 @@ const Sidebar = () => {
                         <ul className="px-4 flex flex-col gap-2 text-sm font-medium flex-1">
                             {
                                 navigation.map((item, idx) => (
-                                    <li key={idx}>
+                                    <li key={idx} className ="relative">
                                         <NavLink to={item.to}>
-                                            {({isActive}) => isActive ? <motion.div layoutId="indicator" className="bg-blue-400 flex text-white items-center gap-x-2 p-2 rounded-lg" >
-                                                <div>{item.icon}</div>
-                                                {item.name}
-                                            </motion.div>
+                                            {({isActive}) => isActive ? <div className="flex items-center gap-x-2 p-2">
+                                                <div className="z-10">{item.icon}</div>
+                                                <div className="z-10">{item.name}</div>
+                                                <motion.div layoutId="indicator" className="bg-blue-400 rounded-lg absolute w-56 h-9 top-0 left-0 z-[1]" />
+                                            </div>
                                             :
                                             <div className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150">
                                                 <div className={({ isPending }) => isPending ? "text-blue-400" : "text-gray-500"}>{item.icon}</div>
