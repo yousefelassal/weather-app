@@ -29,7 +29,7 @@ export default function Profile(){
 
             <p>
                 <strong>Avatar</strong> <br />
-                <img src={profile.avatar} alt="avatar" />
+                <img src={profile.avatar} alt="avatar" className="w-60 rounded-md"/>
             </p>
 
             <Link to="/profile/edit">Edit Profile</Link>

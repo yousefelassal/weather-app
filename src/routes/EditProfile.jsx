@@ -20,24 +20,27 @@ export default function EditProfile() {
         exit={{ opacity: 0 }}
         transition={{ duration: .15 }}
         >
-            <Form method="put">
-                <p>
-                    <span>Name</span>
+            <Form method="put" className="flex flex-col">
+                <div className="flex mt-2">
+                    <span>First Name:</span>
                     <input
                     placeholder="First"
                     aria-label="First name"
                     type="text"
                     name="first"
                     defaultValue={profile.first}
+                    className="border-2 border-gray-200 rounded-md shadow-sm p-1"
                     />
+                    <span>Last Name:</span>
                     <input
                     placeholder="Last"
                     aria-label="Last name"
                     type="text"
                     name="last"
                     defaultValue={profile.last}
+                    className="border-2 border-gray-200 rounded-md shadow-sm p-1"
                     />
-                </p>
+                </div>
                 <label>
                     <span>Avatar URL</span>
                     <input
@@ -46,10 +49,11 @@ export default function EditProfile() {
                     type="text"
                     name="avatar"
                     defaultValue={profile.avatar}
+                    className="border-2 border-gray-200 rounded-md shadow-sm p-1"
                     />
                 </label>
                 
-                <p>
+                <div>
                     <button type="submit">Save</button>
                     <button 
                         type="button"
@@ -59,7 +63,7 @@ export default function EditProfile() {
                     >
                         Cancel
                     </button>
-                </p>
+                </div>
                 </Form>
         </motion.div>
     );
