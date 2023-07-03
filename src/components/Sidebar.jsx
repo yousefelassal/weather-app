@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Sidebar = () => {
-
+    const { profile } = useLoaderData();
     const navigation = [
         {
             to: '/',
@@ -116,11 +116,11 @@ const Sidebar = () => {
                             </ul>
                             <div className="py-4 px-4 border-t">
                                 <div className="flex items-center gap-x-4">
-                                    <img src="https://scontent.fcai19-4.fna.fbcdn.net/v/t1.6435-9/196379927_342631387227961_6698731964075942026_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ZjRarD4FRgYAX9Y427o&_nc_ht=scontent.fcai19-4.fna&oh=00_AfD82v7gSe8XGRXaOFdczp0nZCuuwbe2WgOArvqurF_9PA&oe=64CA6EF3" className="w-12 h-12 rounded-full" />
+                                    <img src={profile.avatar} className="w-12 h-12 rounded-full" />
                                     <div>
-                                        <span className="block text-gray-700 text-sm font-semibold">El rayes</span>
+                                        <span className="block text-gray-700 text-sm font-semibold">{profile.first} {profile.last}</span>
                                         <NavLink
-                                            to="javascript:void(0)"
+                                            to="profile"
                                             className="block mt-px text-gray-600 hover:text-blue-400 text-xs"
                                         >
                                             View profile

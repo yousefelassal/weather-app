@@ -7,12 +7,15 @@ import Calendar from './routes/Calendar'
 import Map from './routes/Map'
 import Saved from './routes/Saved'
 import Settings from './routes/Settings'
+import Profile, {loader as profileLoader} from './routes/Profile'
+import EditProfile from './routes/EditProfile'
 import './index.css'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    loader: profileLoader,
     children: [
         {index: true, element: <Index />},
         {
@@ -31,6 +34,16 @@ const router = createBrowserRouter([
           path: 'settings',
           element: <Settings />,
         },
+        {
+          path: 'profile',
+          element: <Profile />,
+          loader: profileLoader,
+        },
+        {
+          path: 'profile/edit',
+          element: <EditProfile />,
+          loader: profileLoader,
+        }
     ],
   },
 ]);
