@@ -8,7 +8,7 @@ import Map from './routes/Map'
 import Saved from './routes/Saved'
 import Settings from './routes/Settings'
 import Profile, {loader as profileLoader} from './routes/Profile'
-import EditProfile from './routes/EditProfile'
+import EditProfile, {action as profileAction} from './routes/EditProfile'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -43,6 +43,7 @@ const router = createBrowserRouter([
           path: 'profile/edit',
           element: <EditProfile />,
           loader: profileLoader,
+          action: profileAction,
         }
     ],
   },

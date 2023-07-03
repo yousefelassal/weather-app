@@ -1,10 +1,12 @@
 import {Form, redirect, useLoaderData, useNavigate} from "react-router-dom"
 import { motion } from "framer-motion";
+import requests from "../services/requests";
 
-export async function action({request, updateProfile}){
+export async function action({request}){
     const formData = await request.formData();
     const updates = Object.fromEntries(formData);
-    await updateProfile(updates);
+    console.log(updates)
+    await requests.updateProfile(updates);
     return redirect("/profile");
 }
 
@@ -18,7 +20,7 @@ export default function EditProfile() {
         exit={{ opacity: 0 }}
         transition={{ duration: .15 }}
         >
-            <Form method="post" id="contact-form">
+            <Form method="put">
                 <p>
                     <span>Name</span>
                     <input

@@ -1,17 +1,20 @@
+import {useEffect} from "react";
 import {Link, useLoaderData} from "react-router-dom";
 import {motion} from "framer-motion";
+import requests from "../services/requests";
 
 export async function loader(){
-    const profile = {
-        first: "El",
-        last: "rayes",
-        avatar: "https://scontent.fcai19-4.fna.fbcdn.net/v/t1.6435-9/196379927_342631387227961_6698731964075942026_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ZjRarD4FRgYAX9Y427o&_nc_ht=scontent.fcai19-4.fna&oh=00_AfD82v7gSe8XGRXaOFdczp0nZCuuwbe2WgOArvqurF_9PA&oe=64CA6EF3",
-    };
+    const profile = await requests.getProfile();
     return {profile};
 }
 
 export default function Profile(){
     const {profile} = useLoaderData();
+    useEffect(() => {
+        requests.getProfile().then((profile) => {
+            console.log(profile);
+        });
+    }, []);
     return (
         <motion.div
         initial={{ opacity: 0, y: 100 }}

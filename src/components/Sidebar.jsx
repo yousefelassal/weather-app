@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 const Sidebar = () => {
     const { profile } = useLoaderData();
+    console.log(profile)
     const navigation = [
         {
             to: '/',
