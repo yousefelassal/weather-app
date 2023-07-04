@@ -10,3 +10,19 @@
     width: 100%;
     font-family: 'Poppins', sans-serif;
 }
+
+.searchbar{
+    @apply h-10;
+}
+
+.searchbar[data-isOpen="true"]{
+    @apply h-52;
+}
+
+.searchResults{
+    @apply h-0;
+}
+
+.searchbar[data-isOpen="true"] .searchResults{
+    @apply mt-1 h-full w-full border-t;
+}
