@@ -13,7 +13,7 @@ const Search = ({ search ,handleSearch }) => {
     >
         <motion.input
             type="text"
-            className="w-full px-4 py-2 rounded-full text-sm text-gray-600 outline-none"
+            className="searchbarInput w-[96%] px-4 py-2 rounded-full text-sm text-gray-600 outline-none pl-7"
             placeholder="Search country"
             value={search}
             onChange={handleSearch}
@@ -21,16 +21,26 @@ const Search = ({ search ,handleSearch }) => {
             onBlur={() => setIsOpen(false)}
             layout
         />
-        <motion.div layout className="searchResults">
+        <motion.div layout className="searchDivider"/>
+        <motion.div layout className="searchResults w-full">
             {isOpen && (
-               <motion.ul layout className="p-2">
-                     <li>Search Result 1</li>
-                     <li>Search Result 1</li>
-                     <li>Search Result 1</li>
-                     <li>Search Result 1</li>
-                     <li>Search Result 1</li>
-                     <li>Search Result 1</li>
-               </motion.ul>
+            <>
+                <motion.ul 
+                    layout
+                    className="p-2 w-full"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: .2, delay: .1 }}
+                >
+                        <li>Search Result 1</li>
+                        <li>Search Result 1</li>
+                        <li>Search Result 1</li>
+                        <li>Search Result 1</li>
+                        <li>Search Result 1</li>
+                        <li>Search Result 1</li>
+                </motion.ul>
+            </>
             )}
         </motion.div>
     </motion.div>
@@ -119,7 +129,7 @@ export default function Index() {
         className="h-full flex"
         >
             <Search search={search} handleSearch={handleSearch} />
-            <div className="flex min-h-screen mt-14 flex-col w-[42rem]">
+            <div className="flex min-h-screen pt-14 flex-col w-[42rem]">
                 <Country country={country} setCountry={setCountry} setSearch={setSearch} />
             </div>
             <div className="h-full border-l border-l-gray-200">
