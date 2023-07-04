@@ -23,7 +23,7 @@ const Search = ({ search ,handleSearch }) => {
         />
         <motion.div layout className="searchResults">
             {isOpen && (
-               <motion.ul layout>
+               <motion.ul layout className="p-2">
                      <li>Search Result 1</li>
                      <li>Search Result 1</li>
                      <li>Search Result 1</li>
@@ -119,7 +119,7 @@ export default function Index() {
         className="h-full flex"
         >
             <Search search={search} handleSearch={handleSearch} />
-            <div className="flex h-full mt-14 flex-col w-[42rem]">
+            <div className="flex min-h-screen mt-14 flex-col w-[42rem]">
                 <Country country={country} setCountry={setCountry} setSearch={setSearch} />
             </div>
             <div className="h-full border-l border-l-gray-200">

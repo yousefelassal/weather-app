@@ -26,3 +26,30 @@
 .searchbar[data-isOpen="true"] .searchResults{
     @apply mt-1 h-full w-full border-t;
 }
+
+/* Scrollbar Override */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar:vertical {
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+/* border-radius: 12px; */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+background: linear-gradient(108.42deg, #84baf9 16.76%, #79b4f7 62.49%);
+/* border: 6px solid rgba(0, 0, 0, 0.2);  */
+}
+
+::-webkit-scrollbar-thumb:active{
+    background: linear-gradient(108.42deg, #84baf9 16.76%, #79b4f7 62.49%);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+background-color: #84baf9;
+}
