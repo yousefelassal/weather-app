@@ -19,6 +19,12 @@ const Search = ({ search ,handleSearch, children, isOpen, setIsOpen }) => {
             value={search}
             onChange={handleSearch}
             onFocus={() => setIsOpen(true)}
+            onBlur={() => 
+                setTimeout(() => {
+                    setIsOpen(false)
+                }, 100)
+            }
+            
             layout
         />
         <motion.div layout className="searchResults w-full">
@@ -121,7 +127,7 @@ export default function Index() {
     const [countries, setCountries] = useState([]);
     const [weather, setWeather] = useState([]);
     const [show, setShow] = useState(false);
-    const [countryToShow, setCountryToShow] = useState([country]);
+    const [countryToShow, setCountryToShow] = useState(country);
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -142,16 +148,13 @@ export default function Index() {
     
     const api_key = `48ba77efe4f42c00d19e8410277aeff1`;
     useEffect(() => {
-        if(country.length === 1){
-        console.log(country[0].capital)
-        console.log(country[0])
+        console.log(countryToShow[0].capital)
     axios
-        .get(`https://api.openweathermap.org/data/2.5/weather?q=${country[0].capital}&appid=${api_key}&units=metric`)
+        .get(`https://api.openweathermap.org/data/2.5/weather?q=${countryToShow[0].capital}&appid=${api_key}&units=metric`)
         .then(response => {
         setWeather(response.data);
         });
-    }
-    }, [country, api_key]);
+    }, [countryToShow, api_key]);
 
     const handleSearch = (event) => {
         setSearch(event.target.value);
@@ -175,11 +178,8 @@ export default function Index() {
             <Search search={search} handleSearch={handleSearch} isOpen={isOpen} setIsOpen={setIsOpen} >
                 <Country country={country} handleCountryClick={handleCountryClick} setIsOpen={setIsOpen}/>
             </Search>
-            <div className="flex min-h-screen pt-14 flex-col w-[42rem]">
-                {show ? <Weather country={countryToShow} weather={weather} />
-                :
-                    <Weather country={country} weather={weather} />
-            }
+            <div className="flex min-h-screen justify-end flex-col w-[42rem]">
+                <Weather country={countryToShow} weather={weather} />
             </div>
             <div className="h-full border-l border-l-gray-200">
             </div>
