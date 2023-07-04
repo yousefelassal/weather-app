@@ -16,7 +16,7 @@
 }
 
 .searchbar[data-isOpen="true"]{
-    @apply h-52;
+    @apply h-auto;
 }
 
 .searchbarInput{
@@ -30,16 +30,8 @@
     @apply h-0;
 }
 
-.searchDivider{
-    @apply w-0 h-0;
-}
-
-.searchbar[data-isOpen="true"] .searchDivider{
-    @apply w-full border-t h-1;
-}
-
 .searchbar[data-isOpen="true"] .searchResults{
-    @apply h-full w-full;
+    @apply h-full w-full border-t;
 }
 
 /* Scrollbar Override */

@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Children } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 
-const Search = ({ search ,handleSearch }) => {
+const Search = ({ search ,handleSearch, children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
     <motion.div 
         className="searchbar flex flex-col items-center justify-center w-[40rem] absolute top-2 bg-white"
         data-isOpen={isOpen}
         layout
+        transition={{ duration: .2}}
         style={{borderRadius: '2rem', borderWidth: '1px'}}
     >
         <motion.input
@@ -21,11 +22,10 @@ const Search = ({ search ,handleSearch }) => {
             onBlur={() => setIsOpen(false)}
             layout
         />
-        <motion.div layout className="searchDivider"/>
         <motion.div layout className="searchResults w-full">
             {isOpen && (
             <>
-                <motion.ul 
+                <motion.div 
                     layout
                     className="p-2 w-full"
                     initial={{ opacity: 0, y: -20 }}
@@ -33,13 +33,8 @@ const Search = ({ search ,handleSearch }) => {
                     exit={{ opacity: 0 }}
                     transition={{ duration: .2, delay: .1 }}
                 >
-                        <li>Search Result 1</li>
-                        <li>Search Result 1</li>
-                        <li>Search Result 1</li>
-                        <li>Search Result 1</li>
-                        <li>Search Result 1</li>
-                        <li>Search Result 1</li>
-                </motion.ul>
+                    {children}
+                </motion.div>
             </>
             )}
         </motion.div>
@@ -49,7 +44,7 @@ const Search = ({ search ,handleSearch }) => {
 const Country = ({country, setCountry, setSearch}) => {
     if (country.length > 10) {
       return (
-        <div>Too many matches, specify another filter</div>
+        <motion.div layout>Too many matches, specify another filter</motion.div>
       );
     }
   
@@ -58,41 +53,34 @@ const Country = ({country, setCountry, setSearch}) => {
       setSearch('');
     }
   
-    if(country.length > 1) {
+    if(country.length >= 1) {
       return (
-        <div>
+        <motion.div
+            layout
+            className="flex flex-col gap-2 mb-1"
+        >
           {country.map(country =>
-            <div key={country.name.common}>
-              {country.name.common}
-              <button onClick={() => handleClick(country)}>show</button>
-            </div>
+            <motion.button 
+                layout 
+                onClick={() => handleClick(country)} 
+                key={country.name.common}
+                className="justify-between flex w-full items-center py-2 px-3 rounded-xl hover:bg-slate-200"
+            >   
+                <motion.div layout className="flex gap-2">
+                    <img src={country.flags.png} alt={country.flags.alt} width="35" />
+                    {country.name.common} ({country.capital}) 
+                </motion.div>
+                <motion.div layout>
+                    {country.cioc} 
+                </motion.div>
+            </motion.button>
           )}
-        </div>
+        </motion.div>
       )
     }
-    if(country.length === 1) {
-      const languages = Object.values(country[0].languages);
-      return (
-        <div>
-          <h2>{country[0].name.common} ({country[0].cioc})</h2>
-          <div>capital {country[0].capital}</div>
-          <div>population {country[0].population}</div>
-          <div>area {country[0].area} </div>
-          <div>{country[0].subregion}, {country[0].region}</div>
-  
-          <h3>languages</h3>
-          <ul>
-            {languages.map(language => <li key={language}>{language}</li>)}
-          </ul>
-  
-          <img src={country[0].flags.png} alt={country[0].flags.alt} width="250" />
-          <img src={country[0].coatOfArms.png} alt="coat of arm" width="250" />
-  
-        </div>
-      );
-    }
+    
     return (
-      <div>Search any valid country!</div>
+      <motion.div>Search any country!</motion.div>
     );
   }
 
@@ -128,9 +116,10 @@ export default function Index() {
         transition={{ duration: .15 }}
         className="h-full flex"
         >
-            <Search search={search} handleSearch={handleSearch} />
-            <div className="flex min-h-screen pt-14 flex-col w-[42rem]">
+            <Search search={search} handleSearch={handleSearch} >
                 <Country country={country} setCountry={setCountry} setSearch={setSearch} />
+            </Search>
+            <div className="flex min-h-screen pt-14 flex-col w-[42rem]">
             </div>
             <div className="h-full border-l border-l-gray-200">
             </div>
