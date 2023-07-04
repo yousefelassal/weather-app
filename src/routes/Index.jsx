@@ -89,7 +89,7 @@ const Country = ({country, handleCountryClick}) => {
   }
 
   const Weather = ({country, weather}) => {
-    if (country.length === 0) {
+    if (country.length === 0 || weather.length === 0) {
       return (
         <div>Weather data not available</div>
       );
