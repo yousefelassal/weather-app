@@ -1,9 +1,8 @@
-import { useState, useEffect, Children } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 
-const Search = ({ search ,handleSearch, children }) => {
-    const [isOpen, setIsOpen] = useState(false);
+const Search = ({ search ,handleSearch, children, isOpen, setIsOpen }) => {
 
     return (
     <motion.div 
@@ -20,7 +19,6 @@ const Search = ({ search ,handleSearch, children }) => {
             value={search}
             onChange={handleSearch}
             onFocus={() => setIsOpen(true)}
-            onBlur={() => setIsOpen(false)}
             layout
         />
         <motion.div layout className="searchResults w-full">
@@ -42,7 +40,7 @@ const Search = ({ search ,handleSearch, children }) => {
     </motion.div>
 )};
 
-const Country = ({country, handleCountryClick}) => {
+const Country = ({country, handleCountryClick, setIsOpen}) => {
     if (country.length > 10) {
       return (
         <motion.div layout>Too many matches, keep typing!</motion.div>
@@ -52,6 +50,7 @@ const Country = ({country, handleCountryClick}) => {
     const handleClick = (country) => {
         console.log(country)
         handleCountryClick(country);
+        setIsOpen(false);
     }
   
     if(country.length >= 1) {
@@ -122,6 +121,8 @@ export default function Index() {
     const [countries, setCountries] = useState([]);
     const [weather, setWeather] = useState([]);
     const [show, setShow] = useState(false);
+    const [countryToShow, setCountryToShow] = useState([country]);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         axios
@@ -158,7 +159,7 @@ export default function Index() {
 
     const handleCountryClick = (country) => {
         console.log(country)
-        setCountry([country]);
+        setCountryToShow([country]);
         setSearch('');
         setShow(true);
       }
@@ -171,11 +172,11 @@ export default function Index() {
         transition={{ duration: .15 }}
         className="h-full flex"
         >
-            <Search search={search} handleSearch={handleSearch} >
-                <Country country={country} handleCountryClick={handleCountryClick} />
+            <Search search={search} handleSearch={handleSearch} isOpen={isOpen} setIsOpen={setIsOpen} >
+                <Country country={country} handleCountryClick={handleCountryClick} setIsOpen={setIsOpen}/>
             </Search>
             <div className="flex min-h-screen pt-14 flex-col w-[42rem]">
-                {show ? <Weather country={country} weather={weather} />
+                {show ? <Weather country={countryToShow} weather={weather} />
                 :
                     <Weather country={country} weather={weather} />
             }
