@@ -96,17 +96,61 @@ const Country = ({country, handleCountryClick, setIsOpen}) => {
   const Weather = ({country, weather}) => {
     if (country.length === 0 || weather.length === 0) {
       return (
-        <div>Weather data not available</div>
+        <div>Skeleton</div>
       );
     }
     return (
-      <div>
-        <h3>Weather in {weather.location.region}</h3>
-        <div>temperature: {weather.current.temp_c} Celsius</div>
+      <div className="flex flex-col p-4">
+        <div className="flex justify-between">
+          <h3>Weather in {weather.location.name}</h3>
+          <div>{weather.location.localtime}</div>
+        </div>
+          <div className="grid place-items-center">
+            <div>{weather.current.temp_c}°</div>
+            <div>{weather.current.condition.text}</div>
+          </div>
         <img src={weather.current.condition.icon} alt={weather.current.condition.text} width="100px" />
         <div>wind: {weather.current.wind_kph} k/h</div>
       </div>
     );
+  }
+
+  const Sidecast = ({country, weather}) => {
+    if(country.length === 0 || weather.length === 0) {
+      return (
+        <div>Skeleton</div>
+      );
+    }
+    return (
+        <div className="flex flex-col p-3">
+            <div>
+              <h2>This Week</h2>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h2>Today</h2>
+              <div className="flex gap-2 overflow-x-scroll w-72">
+                {
+                  weather.forecast.forecastday[0].hour.map(hour =>
+                    <div className="flex flex-col items-center" key={hour.time}>
+                      <div>{hour.time}</div>
+                      <img src={hour.condition.icon} alt={hour.condition.text} />
+                      <div>{hour.temp_c}°</div>
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              {weather.forecast.forecastday.map(day =>
+                <div className="flex justify-between items-center" key={day.date}>
+                  <div>{day.date}</div>
+                  <div>{day.day.avgtemp_c}°</div>
+                  <img src={day.day.condition.icon} alt={day.day.condition.text} />
+                </div>
+              )}
+            </div>
+        </div>
+    )
   }
 
 export default function Index() {
@@ -183,6 +227,7 @@ export default function Index() {
                 <Weather country={countryToShow} weather={weather} />
             </div>
             <div className="h-full border-l border-l-gray-200">
+              <Sidecast country={countryToShow} weather={weather} />
             </div>
         </motion.div>
     );

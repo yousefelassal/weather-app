@@ -70,7 +70,7 @@ const Sidebar = () => {
     return (
         <>
             <nav
-                className="fixed top-0 left-0 h-full border-r border-r-gray-200 bg-white space-y-8 w-64">
+                className="fixed top-0 left-0 h-full border-r border-r-gray-200 bg-white space-y-8 w-64 z-50">
                 <div className="flex flex-col h-full">
                     <div className='h-20 flex items-center px-8'>
                         <NavLink to='/' className='flex items-center -ml-7'>
