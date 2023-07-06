@@ -100,42 +100,85 @@ const Country = ({country, handleCountryClick, setIsOpen}) => {
       );
     }
     return (
-      <div className="flex flex-col p-4">
+      <div className="flex flex-col p-4 mr-4 rounded-lg bg-slate-400">
         <div className="flex justify-between">
           <h3>Weather in {weather.location.name}</h3>
-          <div>{weather.location.localtime}</div>
+          <div>{weather.location.localtime.split(' ')[1]}</div>
         </div>
           <div className="grid place-items-center">
             <div>{weather.current.temp_c}°</div>
             <div>{weather.current.condition.text}</div>
           </div>
-        <img src={weather.current.condition.icon} alt={weather.current.condition.text} width="100px" />
-        <div>wind: {weather.current.wind_kph} k/h</div>
+          <div className="flex justify-between">
+            <div>wind: {weather.current.wind_kph} k/h</div>
+            <div>humidity: {weather.current.humidity}</div>
+            <div>pressure: {weather.current.pressure_mb}</div>
+          </div>
       </div>
     );
   }
 
   const Sidecast = ({country, weather}) => {
+    const [now, setNow] = useState(null)
+    useEffect(() => {
+      setNow(document.getElementById('now'))
+      if(now) {
+        now.scrollIntoView({behavior: 'smooth', block: 'center'})
+      }
+    }, [weather, now])
+
     if(country.length === 0 || weather.length === 0) {
       return (
         <div>Skeleton</div>
       );
     }
+
+
     return (
         <div className="flex flex-col p-3">
-            <div>
+            <div className="grid place-items-center">
               <h2>This Week</h2>
             </div>
             <div className="flex flex-col gap-2">
               <h2>Today</h2>
-              <div className="flex gap-2 overflow-x-scroll w-72">
+              <div className="flex gap-2 items-center overflow-x-scroll w-72 py-2">
                 {
-                  weather.forecast.forecastday[0].hour.map(hour =>
-                    <div className="flex flex-col items-center" key={hour.time}>
-                      <div>{hour.time}</div>
+                  weather.forecast.forecastday[0].hour.map(hour => {
+                    if(hour.time.split(' ')[1].split(':')[0] === weather.location.localtime.split(' ')[1].split(':')[0]) return (
+                      <div 
+                        id="now" 
+                        className="flex flex-col py-2 px-4 items-center justify-center rounded-md shadow-md" 
+                        key={hour.time}
+                        style={{
+                          backgroundColor: weather.current.is_day ? '#84baf9' : '#223C53',
+                        }}
+                      >
+                        <div
+                          style={{
+                            color: weather.current.is_day ? '#000000' : '#ffffff',
+                          }}
+                        >
+                          Now
+                        </div>
+                        <img src={hour.condition.icon} alt={hour.condition.text} />
+                        <div
+                          style={{
+                            color: weather.current.is_day ? '#000000' : '#ffffff',
+                          }}
+                        >
+                          {hour.temp_c}°
+                        </div>
+                      </div>
+                    )
+                    return (
+                    <div className="flex flex-col items-center justify-center" key={hour.time}>
+                      <div>{hour.time.split(' ')[1]}</div>
                       <img src={hour.condition.icon} alt={hour.condition.text} />
                       <div>{hour.temp_c}°</div>
                     </div>
+                    
+                  )
+                }
                   )
                 }
               </div>
