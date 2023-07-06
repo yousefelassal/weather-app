@@ -73,9 +73,9 @@ background-color: #84baf9;
   
   @keyframes skeleton-loading {
     0% {
-        background-color: hsl(200, 10%, 15%);
+        background-color: hsl(198, 8%, 58%);
     }
     100% {
-        background-color: hsl(200, 20%, 30%);
+        background-color: hsl(207, 20%, 30%);
     }
 }

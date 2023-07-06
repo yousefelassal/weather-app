@@ -3,7 +3,9 @@ import LinePlot from "../components/LinePlot";
 const Weather = ({country, weather}) => {
     if (country.length === 0 || weather.length === 0) {
       return (
-        <div>Skeleton</div>
+        <div className="skeleton h-72 rounded-lg mx-6">
+
+        </div>
       );
     }
 
@@ -12,7 +14,7 @@ const Weather = ({country, weather}) => {
     const dayTime = ['Morning', 'Afternoon', 'Evening', 'Night']
     return (
       <div 
-        className="flex justify-between p-4 mr-4 rounded-lg shadow-md"
+        className="flex justify-between p-4 rounded-lg shadow-md mx-6"
         style={{
           backgroundColor: weather.current.is_day ? '#84baf9' : '#223C53',
           color: weather.current.is_day ? '#25629D' : '#ffffff',

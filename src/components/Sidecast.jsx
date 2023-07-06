@@ -11,7 +11,26 @@ const Sidecast = ({country, weather}) => {
 
     if(country.length === 0 || weather.length === 0) {
       return (
-        <div>Skeleton</div>
+        <div className="flex flex-col px-4 py-3 fixed">
+            <div className="grid place-items-center">
+                <h2 className="text-lg">This Week</h2>
+            </div>
+            <div className="flex flex-col gap-2">
+                <h2>Today</h2>
+                <div className="flex gap-2 items-center w-[18.5rem] py-2">
+                    <div className="skeleton h-20 w-16 rounded-md"></div>
+                    <div className="skeleton h-20 w-16 rounded-md"></div>
+                    <div className="skeleton h-20 w-16 rounded-md"></div>
+                    <div className="skeleton h-20 w-16 rounded-md"></div>
+                    <div className="skeleton h-20 w-16 rounded-md"></div>
+                </div>
+            </div>
+            <div className="flex flex-col gap-2">
+                <div className="skeleton h-24 rounded-md"></div>
+                <div className="skeleton h-24 rounded-md"></div>
+                <div className="skeleton h-24 rounded-md"></div>
+            </div>
+        </div>
       );
     }
 

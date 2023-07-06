@@ -6,6 +6,22 @@ import Sidecast from "../components/Sidecast";
 import Country from "../components/CountryList";
 import Weather from "../components/WeatherBox";
 
+const MoreWeather = ({ weather }) => {
+    return (
+        <div className="flex flex-wrap gap-6 m-6">
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          </div>
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          </div>
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          </div>
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          </div>
+          
+        </div>
+    )
+}
+
 export default function Index() {
     const [search, setSearch] = useState(null);
     const [country, setCountry] = useState([
@@ -78,6 +94,7 @@ export default function Index() {
             </Search>
             <div className="flex min-h-screen pt-20 flex-col w-[42rem]">
                 <Weather country={countryToShow} weather={weather} />
+                <MoreWeather weather={weather} />
             </div>
             <div className="h-full border-l border-l-gray-200">
               <Sidecast country={countryToShow} weather={weather} />
