@@ -17,13 +17,13 @@ const Sidecast = ({country, weather}) => {
 
 
     return (
-        <div className="flex flex-col mx-3 py-3">
+        <div className="flex flex-col px-4 py-3 fixed">
             <div className="grid place-items-center">
               <h2 className="text-lg">This Week</h2>
             </div>
             <div className="flex flex-col gap-2">
               <h2>Today</h2>
-              <div className="flex gap-2 items-center overflow-x-scroll w-72 py-2">
+              <div className="flex gap-2 items-center overflow-x-scroll w-[18.5rem] py-2">
                 {
                   weather.forecast.forecastday[0].hour.map(hour => {
                     if(hour.time.split(' ')[1].split(':')[0] === weather.location.localtime.split(' ')[1].split(':')[0]
