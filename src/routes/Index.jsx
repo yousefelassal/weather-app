@@ -100,13 +100,21 @@ const Country = ({country, handleCountryClick, setIsOpen}) => {
       );
     }
     return (
-      <div className="flex flex-col p-4 mr-4 rounded-lg bg-slate-400">
-        <div className="flex justify-between">
-          <h3>Weather in {weather.location.name}</h3>
+      <div 
+        className="flex flex-col p-4 mr-4 rounded-lg"
+        style={{
+          backgroundColor: weather.current.is_day ? '#84baf9' : '#223C53',
+          color: weather.current.is_day ? '#25629D' : '#ffffff',
+        }}
+      >
+        <div 
+          className="flex justify-between"
+        >
+          <h3>{weather.location.name}</h3>
           <div>{weather.location.localtime.split(' ')[1]}</div>
         </div>
-          <div className="grid place-items-center">
-            <div>{weather.current.temp_c}°</div>
+          <div className="grid place-items-center gap-2 my-12">
+            <div className="text-7xl font-medium pl-4">{weather.current.temp_c}°</div>
             <div>{weather.current.condition.text}</div>
           </div>
           <div className="flex justify-between">
@@ -137,7 +145,7 @@ const Country = ({country, handleCountryClick, setIsOpen}) => {
     return (
         <div className="flex flex-col p-3">
             <div className="grid place-items-center">
-              <h2>This Week</h2>
+              <h2 className="text-lg">This Week</h2>
             </div>
             <div className="flex flex-col gap-2">
               <h2>Today</h2>
@@ -155,15 +163,15 @@ const Country = ({country, handleCountryClick, setIsOpen}) => {
                       >
                         <div
                           style={{
-                            color: weather.current.is_day ? '#000000' : '#ffffff',
+                            color: weather.current.is_day ? '#25629D' : '#ffffff',
                           }}
                         >
                           Now
                         </div>
-                        <img src={hour.condition.icon} alt={hour.condition.text} />
+                        <img src={hour.condition.icon} alt={hour.condition.text} height="50px" width="50px" />
                         <div
                           style={{
-                            color: weather.current.is_day ? '#000000' : '#ffffff',
+                            color: weather.current.is_day ? '#25629D' : '#ffffff',
                           }}
                         >
                           {hour.temp_c}°
@@ -266,7 +274,7 @@ export default function Index() {
             <Search search={search} handleSearch={handleSearch} isOpen={isOpen} setIsOpen={setIsOpen} >
                 <Country country={country} handleCountryClick={handleCountryClick} setIsOpen={setIsOpen}/>
             </Search>
-            <div className="flex min-h-screen justify-end flex-col w-[42rem]">
+            <div className="flex min-h-screen pt-20 flex-col w-[42rem]">
                 <Weather country={countryToShow} weather={weather} />
             </div>
             <div className="h-full border-l border-l-gray-200">
