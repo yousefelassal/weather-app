@@ -101,10 +101,10 @@ const Country = ({country, handleCountryClick, setIsOpen}) => {
     }
     return (
       <div>
-        <h3>Weather in {country[0].capital}</h3>
-        <div>temperature: {weather.main.temp} Celsius</div>
-        <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt={weather.weather[0].description} width="100px" />
-        <div>wind: {weather.wind.speed} m/s</div>
+        <h3>Weather in {weather.location.region}</h3>
+        <div>temperature: {weather.current.temp_c} Celsius</div>
+        <img src={weather.current.condition.icon} alt={weather.current.condition.text} width="100px" />
+        <div>wind: {weather.current.wind_kph} k/h</div>
       </div>
     );
   }
@@ -146,13 +146,14 @@ export default function Index() {
         }
     }, [search, countries]);
     
-    const api_key = `48ba77efe4f42c00d19e8410277aeff1`;
+    const api_key = `7cb55a05af4440e0a8d133511231106`;
     useEffect(() => {
         console.log(countryToShow[0].capital)
     axios
-        .get(`https://api.openweathermap.org/data/2.5/weather?q=${countryToShow[0].capital}&appid=${api_key}&units=metric`)
+        .get(`http://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${countryToShow[0].capital}&days=7&aqi=no&alerts=no`)
         .then(response => {
         setWeather(response.data);
+        console.log(response.data)
         });
     }, [countryToShow, api_key]);
 
