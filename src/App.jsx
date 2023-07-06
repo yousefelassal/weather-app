@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <Sidebar />
-      <div className="ml-64 px-4">
+      <div className="ml-60 px-4">
         <AnimatePresence mode="wait">
           <Outlet />
         </AnimatePresence>

@@ -7,19 +7,32 @@ import Country from "../components/CountryList";
 import Weather from "../components/WeatherBox";
 
 const MoreWeather = ({ weather }) => {
+    if (weather.length === 0) {
     return (
         <div className="flex flex-wrap gap-6 m-6">
-          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.7rem] h-32">
           </div>
-          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.7rem] h-32">
           </div>
-          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.7rem] h-32">
           </div>
-          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.5rem] h-32">
+          <div className="bg-[#EDF3F8] skeleton rounded-lg w-[18.7rem] h-32">
           </div>
-          
         </div>
     )
+  }
+  return(
+    <div className="flex flex-wrap gap-6 m-6">
+      <div className="bg-[#EDF3F8] rounded-lg w-[18.7rem] h-32">
+          </div>
+          <div className="bg-[#EDF3F8] rounded-lg w-[18.7rem] h-32">
+          </div>
+          <div className="bg-[#EDF3F8] rounded-lg w-[18.7rem] h-32">
+          </div>
+          <div className="bg-[#EDF3F8] rounded-lg w-[18.7rem] h-32">
+          </div>
+    </div> 
+  )
 }
 
 export default function Index() {
