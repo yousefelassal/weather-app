@@ -7,7 +7,7 @@ const Weather = ({country, weather}) => {
       );
     }
 
-    const indexes = [7, 12, 19, 23];
+    const indexes = [6, 12, 19, 23];
     const data = weather.forecast.forecastday[0].hour.filter((d, i) => indexes.includes(i));
     const dayTime = ['Morning', 'Afternoon', 'Evening', 'Night']
     return (
