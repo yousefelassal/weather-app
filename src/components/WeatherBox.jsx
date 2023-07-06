@@ -12,7 +12,7 @@ const Weather = ({country, weather}) => {
     const dayTime = ['Morning', 'Afternoon', 'Evening', 'Night']
     return (
       <div 
-        className="flex justify-between p-4 mr-4 rounded-lg"
+        className="flex justify-between p-4 mr-4 rounded-lg shadow-md"
         style={{
           backgroundColor: weather.current.is_day ? '#84baf9' : '#223C53',
           color: weather.current.is_day ? '#25629D' : '#ffffff',
@@ -39,7 +39,7 @@ const Weather = ({country, weather}) => {
             <div>p: {weather.current.pressure_mb}</div>
           </div>
           </div>
-          <div className="bg-white/30 rounded-lg flex flex-col justify-between p-4 h-[19rem]">
+          <div className="bg-white/30 rounded-lg flex flex-col justify-between p-4 h-[19rem] shadow-sm">
             <h2 
               className="font-bold"
               style={{

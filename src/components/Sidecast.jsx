@@ -26,7 +26,11 @@ const Sidecast = ({country, weather}) => {
               <div className="flex gap-2 items-center overflow-x-scroll w-72 py-2">
                 {
                   weather.forecast.forecastday[0].hour.map(hour => {
-                    if(hour.time.split(' ')[1].split(':')[0] === weather.location.localtime.split(' ')[1].split(':')[0]) return (
+                    if(hour.time.split(' ')[1].split(':')[0] === weather.location.localtime.split(' ')[1].split(':')[0]
+                    || 
+                    // current time is displayed with a 0 (4:20) & day times are displayed with a 0 (04:20) so this is a fix for that
+                    ['0'].concat(weather.location.localtime.split(' ')[1].split(':')[0]).join('') === hour.time.split(' ')[1].split(':')[0] ) 
+                    return (
                       <div 
                         id="now" 
                         className="flex flex-col py-2 px-4 items-center justify-center rounded-md shadow-md" 
