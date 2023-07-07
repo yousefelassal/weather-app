@@ -1,6 +1,7 @@
 import PieChart from "../components/PieChart";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Compass from "./Compass";
 
 const MoreWeather = ({ weather }) => {
     const [rainText, setRainText] = useState('');
@@ -79,7 +80,9 @@ const MoreWeather = ({ weather }) => {
                                 {rainText}
                             </motion.h3>
                         </>
-                        : 
+                        : dataDisplay[key].dir ?
+                        <Compass dir={dataDisplay[key].dir} />
+                        :
                         <img src={`https:${weather.current.condition.icon}`} alt="weather icon" className="w-24 h-24"/>
                         }
                     </div>

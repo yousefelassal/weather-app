@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import {HiOutlineLocationMarker} from 'react-icons/hi';
 import {PiWindDuotone, PiDropDuotone} from 'react-icons/pi';
 import {RiWindyFill} from 'react-icons/ri';
-import { IconContext } from "react-icons";
 
 const Weather = ({country, weather}) => {
     if (country.length === 0 || weather.length === 0) {
@@ -53,9 +52,7 @@ const Weather = ({country, weather}) => {
           className="flex justify-between"
         >
           <div className="flex gap-1 items-center">
-            <IconContext.Provider value={{size: '1.25rem'}} >
-              <HiOutlineLocationMarker />
-            </IconContext.Provider>
+              <HiOutlineLocationMarker size={20}/>
             <h3 className="font-semibold">{weather.location.name}</h3>
           </div>
           <div>{weather.location.localtime.split(' ')[1]}</div>
