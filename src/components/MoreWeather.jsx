@@ -51,12 +51,24 @@ const MoreWeather = ({ weather }) => {
         title: 'Pressure',
         subtitle: 'Current pressure',
         value: weather.current.pressure_mb + 'mb',
+        pressureChart: <NeedlePieChart 
+            value={weather.current.pressure_mb} 
+            data={[
+                { name: 'A', value: 1500, color: 'blue' },
+            ]} />,
     },
     UV:{
         title: 'UV Index',
         subtitle: 'Current UV index',
         value: weather.current.uv,
-        uvChart: <NeedlePieChart value={weather.current.uv} />,
+        uvChart: <NeedlePieChart 
+            value={weather.current.uv} 
+            data={[
+                { name: 'A', value: 3, color: 'green' },
+                { name: 'B', value: 3, color: 'yellow' },
+                { name: 'C', value: 3, color: 'orange' },
+                { name: 'C', value: 3, color: 'red' },
+            ]} />,
     }
   }
   return(
@@ -88,8 +100,11 @@ const MoreWeather = ({ weather }) => {
                         <>
                             {dataDisplay[key].uvChart}
                         </>
-                        :
-                        <img src={`https:${weather.current.condition.icon}`} alt="weather icon" className="w-24 h-24"/>
+                        : dataDisplay[key].pressureChart ?
+                        <>
+                            {dataDisplay[key].pressureChart}
+                        </>
+                        : null
                         }
                     </div>
                 </div>

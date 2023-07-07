@@ -2,12 +2,7 @@ import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
 const RADIAN = Math.PI / 180;
-const data = [
-  { name: 'A', value: 3, color: 'green' },
-  { name: 'B', value: 3, color: 'yellow' },
-  { name: 'C', value: 3, color: 'orange' },
-  { name: 'C', value: 3, color: 'red' },
-];
+
 const cx = 75;
 const cy = 85;
 const iR = 32.5;
@@ -41,6 +36,7 @@ const needle = (value, data, cx, cy, iR, oR, color) => {
 export default class Example extends PureComponent {
   render() {
     const value = this.props.value;
+    const data = this.props.data;
     return (
       <PieChart width={175} height={175}>
         <Pie
