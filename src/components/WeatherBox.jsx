@@ -1,5 +1,9 @@
 import LinePlot from "../components/LinePlot";
 import { motion } from "framer-motion";
+import {HiOutlineLocationMarker} from 'react-icons/hi';
+import {PiWindDuotone, PiDropDuotone} from 'react-icons/pi';
+import {RiWindyFill} from 'react-icons/ri';
+import { IconContext } from "react-icons";
 
 const Weather = ({country, weather}) => {
     if (country.length === 0 || weather.length === 0) {
@@ -16,16 +20,16 @@ const Weather = ({country, weather}) => {
 
     const info = {
       wind: {
-        icon: 'w',
-        value: weather.current.wind_kph + ' km/h',
+        icon: <PiWindDuotone />,
+        value: weather.current.wind_kph + 'km/h',
       },
       humidity: {
-        icon: 'h',
+        icon: <PiDropDuotone />,
         value: weather.current.humidity + '%',
       },
       pressure: {
-        icon: 'p',
-        value: weather.current.pressure_mb + ' mb',
+        icon: <RiWindyFill />,
+        value: weather.current.pressure_mb + 'mb',
       },
     }
 
@@ -48,7 +52,12 @@ const Weather = ({country, weather}) => {
         <div 
           className="flex justify-between"
         >
-          <h3 className="font-semibold">{weather.location.name}</h3>
+          <div className="flex gap-1 items-center">
+            <IconContext.Provider value={{size: '1.25rem'}} >
+              <HiOutlineLocationMarker />
+            </IconContext.Provider>
+            <h3 className="font-semibold">{weather.location.name}</h3>
+          </div>
           <div>{weather.location.localtime.split(' ')[1]}</div>
         </div>
           <div className="grid place-items-center gap-2 my-[4.5rem]">
@@ -71,7 +80,7 @@ const Weather = ({country, weather}) => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: .5, delay: i * .15 }}
-                  className="flex"
+                  className="flex gap-1 items-center"
                 >
                   {info[key].icon} {info[key].value}
                 </motion.div>
