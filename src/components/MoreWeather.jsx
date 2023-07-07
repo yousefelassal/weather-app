@@ -10,7 +10,7 @@ const MoreWeather = ({ weather }) => {
         if (weather.forecast.forecastday[0].day.daily_chance_of_rain < 50) {
             setRainText('Low')
         } else if (weather.forecast.forecastday[0].day.daily_chance_of_rain < 75) {
-            setRainText('Medium')
+            setRainText('Mid')
         } else {
             setRainText('High')
         }

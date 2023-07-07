@@ -100,7 +100,7 @@ const Sidecast = ({country, weather}) => {
                   className="flex justify-between items-center" key={day.date}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.15 }}
+                  transition={{ duration: .5, delay: index * 0.15 }}
                 >
                   <div>{day.date}</div>
                   <div>{day.day.avgtemp_c}°</div>

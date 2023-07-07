@@ -30,16 +30,20 @@ const Weather = ({country, weather}) => {
     }
 
     return (
-      <div 
-        className="flex justify-between p-4 rounded-lg shadow-md mx-6"
-        style={{
+      <motion.div
+        initial={{
           backgroundColor: weather.current.is_day ? '#84baf9' : '#223C53',
           color: weather.current.is_day ? '#25629D' : '#ffffff',
         }}
+        animate={{
+          backgroundColor: weather.current.is_day ? '#84baf9' : '#223C53',
+          color: weather.current.is_day ? '#25629D' : '#ffffff',
+        }}
+        transition={{ duration: .5 }}
+        className="flex justify-between p-4 rounded-lg shadow-md mx-6"
       >
       <div 
         className="flex flex-col w-full h-full mr-6"
-        
       >
         <div 
           className="flex justify-between"
@@ -66,7 +70,7 @@ const Weather = ({country, weather}) => {
                   key={info[key].value}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: .3, delay: i * .1 }}
+                  transition={{ duration: .5, delay: i * .15 }}
                   className="flex"
                 >
                   {info[key].icon} {info[key].value}
@@ -103,7 +107,7 @@ const Weather = ({country, weather}) => {
               }
             </div>
           </div>
-      </div>
+      </motion.div>
     );
   }
 
