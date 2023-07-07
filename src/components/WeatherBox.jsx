@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import {HiOutlineLocationMarker} from 'react-icons/hi';
 import {PiWindDuotone, PiDropDuotone} from 'react-icons/pi';
 import {RiWindyFill} from 'react-icons/ri';
+import { format } from 'date-fns'
 
 const Weather = ({country, weather}) => {
     if (country.length === 0 || weather.length === 0) {
@@ -55,7 +56,7 @@ const Weather = ({country, weather}) => {
               <HiOutlineLocationMarker size={20}/>
             <h3 className="font-semibold">{weather.location.name}</h3>
           </div>
-          <div>{weather.location.localtime.split(' ')[1]}</div>
+          <div>{format(new Date(weather.location.localtime), 'hh:mm b' )}</div>
         </div>
           <div className="grid place-items-center gap-2 my-[4.5rem]">
             <motion.div 

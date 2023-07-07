@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { format } from 'date-fns'
 
 const Sidecast = ({country, weather}) => {
     const [now, setNow] = useState(null)
@@ -82,8 +83,8 @@ const Sidecast = ({country, weather}) => {
                       </div>
                     )
                     return (
-                    <div className="flex flex-col items-center justify-center" key={hour.time}>
-                      <div>{hour.time.split(' ')[1]}</div>
+                    <div className="flex flex-col items-center gap-[0.125rem] justify-center px-1" key={hour.time}>
+                      <div className="text-xs flex">{format(new Date(hour.time), 'ha')}</div>
                       <img src={hour.condition.icon} alt={hour.condition.text} />
                       <div>{hour.temp_c}°</div>
                     </div>
@@ -94,16 +95,19 @@ const Sidecast = ({country, weather}) => {
                 }
               </div>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 pt-2">
               {weather.forecast.forecastday.map((day, index) =>
                 <motion.div 
-                  className="flex justify-between items-center" key={day.date}
+                  className="flex justify-between relative items-center" key={day.date}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: .5, delay: index * 0.15 }}
                 >
-                  <div>{day.date}</div>
-                  <div>{day.day.avgtemp_c}°</div>
+                  <div className="flex flex-col gap-1">
+                    <div>{format(new Date(day.date), 'eeee')}</div>
+                    <div className="font-light text-gray-500">{format(new Date(day.date), 'd MMM')}</div>
+                  </div>
+                  <div className="absolute top-6 left-32 font-semibold">{day.day.avgtemp_c}°</div>
                   <img src={day.day.condition.icon} alt={day.day.condition.text} />
                 </motion.div>
               )}
