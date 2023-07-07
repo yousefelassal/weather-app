@@ -5,6 +5,7 @@ import Search from "../components/Searchbar";
 import Sidecast from "../components/Sidecast";
 import Country from "../components/CountryList";
 import Weather from "../components/WeatherBox";
+import PieChart from "../components/PieChart";
 
 const MoreWeather = ({ weather }) => {
     if (weather.length === 0) {
@@ -32,6 +33,7 @@ const MoreWeather = ({ weather }) => {
         title: 'Rain Chanse',
         subtitle: "Today's rain chanse",
         value: weather.forecast.forecastday[0].day.daily_chance_of_rain + '%',
+        chart: <PieChart value={weather.forecast.forecastday[0].day.daily_chance_of_rain} />,
     },
     Pressure:{
         title: 'Pressure',
@@ -55,7 +57,9 @@ const MoreWeather = ({ weather }) => {
                         <h2 className="text-base font-semibold">{dataDisplay[key].value}</h2>
                     </div>
                     <div className="w-1/2 flex justify-center items-center">
+                        {dataDisplay[key].chart ? dataDisplay[key].chart : 
                         <img src={`https:${weather.current.condition.icon}`} alt="weather icon" className="w-24 h-24"/>
+                        }
                     </div>
                 </div>
             ))
