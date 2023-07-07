@@ -5,7 +5,6 @@ import requests from "../services/requests";
 export async function action({request}){
     const formData = await request.formData();
     const updates = Object.fromEntries(formData);
-    console.log(updates)
     await requests.updateProfile(updates);
     return redirect("/profile");
 }
