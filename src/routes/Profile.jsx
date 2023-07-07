@@ -11,9 +11,7 @@ export async function loader(){
 export default function Profile(){
     const {profile} = useLoaderData();
     useEffect(() => {
-        requests.getProfile().then((profile) => {
-            console.log(profile);
-        });
+        requests.getProfile();
     }, []);
     return (
         <motion.div

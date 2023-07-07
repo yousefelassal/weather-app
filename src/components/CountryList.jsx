@@ -8,9 +8,8 @@ const Country = ({country, handleCountryClick, setIsOpen}) => {
     }
 
     const handleClick = (country) => {
-        console.log(country)
-        handleCountryClick(country);
-        setIsOpen(false);
+      handleCountryClick(country);
+      setIsOpen(false);
     }
   
     if(country.length >= 1) {

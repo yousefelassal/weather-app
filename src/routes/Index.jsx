@@ -39,19 +39,17 @@ export default function Index() {
     useEffect(() => {
         if (search) {
             const result = countries.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase()));
-            console.log(result);
             setCountry(result);
         }
     }, [search, countries]);
     
     const api_key = `7cb55a05af4440e0a8d133511231106`;
     useEffect(() => {
-        console.log(countryToShow[0].capital)
     axios
         .get(`http://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${countryToShow[0].capital}&days=7&aqi=no&alerts=no`)
         .then(response => {
         setWeather(response.data);
-        console.log(response.data)
+        console.log(response.data);
         });
     }, [countryToShow, api_key]);
 
@@ -60,7 +58,6 @@ export default function Index() {
     }
 
     const handleCountryClick = (country) => {
-        console.log(country)
         setCountryToShow([country]);
         setSearch('');
         setShow(true);
