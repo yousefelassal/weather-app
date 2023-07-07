@@ -16,7 +16,7 @@ export default class Example extends PureComponent {
           data={data}
           cx={40}
           cy={50}
-          innerRadius={30}
+          innerRadius={32.5}
           outerRadius={40}
           fill="#8884d8"
           paddingAngle={0}

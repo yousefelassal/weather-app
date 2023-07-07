@@ -1,6 +1,23 @@
 import PieChart from "../components/PieChart";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const MoreWeather = ({ weather }) => {
+    const [rainText, setRainText] = useState('');
+
+    useEffect(() => {
+        if(weather.length === 0) return;
+        if (weather.forecast.forecastday[0].day.daily_chance_of_rain < 50) {
+            setRainText('Low')
+        } else if (weather.forecast.forecastday[0].day.daily_chance_of_rain < 75) {
+            setRainText('Medium')
+        } else {
+            setRainText('High')
+        }
+    }, [weather])
+
+
+
     if (weather.length === 0) {
     return (
         <div className="flex flex-wrap gap-6 m-6">
@@ -22,9 +39,9 @@ const MoreWeather = ({ weather }) => {
         value: weather.current.wind_kph + 'km/h',
         dir: weather.current.wind_dir,
     },
-    RainChanse: {
-        title: 'Rain Chanse',
-        subtitle: "Today's rain chanse",
+    RainChance: {
+        title: 'Rain Chance',
+        subtitle: "Today's rain chance",
         value: weather.forecast.forecastday[0].day.daily_chance_of_rain + '%',
         rainChart: <PieChart value={weather.forecast.forecastday[0].day.daily_chance_of_rain} />,
     },
@@ -53,11 +70,14 @@ const MoreWeather = ({ weather }) => {
                         {dataDisplay[key].rainChart ? 
                         <>
                             {dataDisplay[key].rainChart}
-                            <h3 className="absolute top-12">{dataDisplay[key].value > 70 ? 
-                            "High"
-                            : dataDisplay[key].value > 50 ?
-                            "Mid" : "Low"
-                            }</h3>
+                            <motion.h3  key={rainText}
+                                className="absolute top-[3.6rem] left-[3.4rem] text-sm font-semibold"
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0 }}
+                            >
+                                {rainText}
+                            </motion.h3>
                         </>
                         : 
                         <img src={`https:${weather.current.condition.icon}`} alt="weather icon" className="w-24 h-24"/>
