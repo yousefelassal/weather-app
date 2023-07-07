@@ -1,7 +1,8 @@
-import PieChart from "../components/PieChart";
+import PieChart from "./PieChart";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Compass from "./Compass";
+import NeedlePieChart from "./NeedlePieChart";
 
 const MoreWeather = ({ weather }) => {
     const [rainText, setRainText] = useState('');
@@ -55,6 +56,7 @@ const MoreWeather = ({ weather }) => {
         title: 'UV Index',
         subtitle: 'Current UV index',
         value: weather.current.uv,
+        uvChart: <NeedlePieChart value={weather.current.uv} />,
     }
   }
   return(
@@ -72,7 +74,7 @@ const MoreWeather = ({ weather }) => {
                         <>
                             {dataDisplay[key].rainChart}
                             <motion.h3  key={rainText}
-                                className="absolute top-[3.6rem] left-[3.4rem] text-sm font-semibold"
+                                className="absolute top-[3.6rem] left-[3.3rem] grid place-items-center text-center text-sm font-semibold"
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
@@ -82,6 +84,10 @@ const MoreWeather = ({ weather }) => {
                         </>
                         : dataDisplay[key].dir ?
                         <Compass dir={dataDisplay[key].dir} />
+                        : dataDisplay[key].uvChart ?
+                        <>
+                            {dataDisplay[key].uvChart}
+                        </>
                         :
                         <img src={`https:${weather.current.condition.icon}`} alt="weather icon" className="w-24 h-24"/>
                         }
