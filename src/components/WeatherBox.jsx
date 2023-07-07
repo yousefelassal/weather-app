@@ -2,21 +2,6 @@ import LinePlot from "../components/LinePlot";
 import { motion } from "framer-motion";
 
 const Weather = ({country, weather}) => {
-  const info = {
-    wind: {
-      icon: 'w',
-      value: weather.current.wind_kph + ' km/h',
-    },
-    humidity: {
-      icon: 'h',
-      value: weather.current.humidity + '%',
-    },
-    pressure: {
-      icon: 'p',
-      value: weather.current.pressure_mb + ' mb',
-    },
-  }
-
     if (country.length === 0 || weather.length === 0) {
       return (
         <div className="skeleton h-72 rounded-lg mx-6">
@@ -28,6 +13,21 @@ const Weather = ({country, weather}) => {
     const indexes = [6, 12, 19, 23];
     const data = weather.forecast.forecastday[0].hour.filter((d, i) => indexes.includes(i));
     const dayTime = ['Morning', 'Afternoon', 'Evening', 'Night']
+
+    const info = {
+      wind: {
+        icon: 'w',
+        value: weather.current.wind_kph + ' km/h',
+      },
+      humidity: {
+        icon: 'h',
+        value: weather.current.humidity + '%',
+      },
+      pressure: {
+        icon: 'p',
+        value: weather.current.pressure_mb + ' mb',
+      },
+    }
 
     return (
       <div 
