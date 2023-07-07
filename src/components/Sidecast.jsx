@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { format } from 'date-fns'
+import {SlArrowRight, SlArrowLeft} from 'react-icons/sl'
 
 const Sidecast = ({country, weather}) => {
     const [now, setNow] = useState(null)
@@ -44,10 +45,16 @@ const Sidecast = ({country, weather}) => {
           animate={{ opacity: 1 }}
           key={weather.current.temp_c}
         >
-            <div className="grid place-items-center">
+            <div className="flex justify-between items-center mt-3">
+              <button disabled={true} className="text-gray-500/50 hover:text-gray-500/100 hover:cursor-not-allowed">
+                <SlArrowLeft />
+              </button>
               <h2 className="text-lg">This Week</h2>
+              <button disabled={true} className="text-gray-500/50 hover:text-gray-500/100 hover:cursor-not-allowed">
+                <SlArrowRight />
+              </button>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 mt-6">
               <h2>Today</h2>
               <div className="flex gap-2 items-center overflow-x-scroll w-[18.5rem] py-2">
                 {

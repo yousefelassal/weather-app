@@ -4,7 +4,7 @@ const Search = ({ search ,handleSearch, children, isOpen, setIsOpen }) => {
 
     return (
     <motion.div 
-        className="searchbar flex flex-col items-center mx-6 justify-center w-[39rem] absolute top-2 bg-white z-10"
+        className="searchbar flex flex-col items-center mx-6 justify-center w-[39rem] absolute top-4 bg-white z-10"
         data-isOpen={isOpen}
         layout
         transition={{ duration: .2}}
