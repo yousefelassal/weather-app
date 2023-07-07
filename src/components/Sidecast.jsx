@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const Sidecast = ({country, weather}) => {
     const [now, setNow] = useState(null)
@@ -36,7 +37,12 @@ const Sidecast = ({country, weather}) => {
 
 
     return (
-        <div className="flex flex-col px-4 py-3 fixed">
+        <motion.div 
+          className="flex flex-col px-4 py-3 fixed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          key={weather.current.temp_c}
+        >
             <div className="grid place-items-center">
               <h2 className="text-lg">This Week</h2>
             </div>
@@ -89,15 +95,20 @@ const Sidecast = ({country, weather}) => {
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              {weather.forecast.forecastday.map(day =>
-                <div className="flex justify-between items-center" key={day.date}>
+              {weather.forecast.forecastday.map((day, index) =>
+                <motion.div 
+                  className="flex justify-between items-center" key={day.date}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.15 }}
+                >
                   <div>{day.date}</div>
                   <div>{day.day.avgtemp_c}°</div>
                   <img src={day.day.condition.icon} alt={day.day.condition.text} />
-                </div>
+                </motion.div>
               )}
             </div>
-        </div>
+        </motion.div>
     )
   }
 
