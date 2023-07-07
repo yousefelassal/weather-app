@@ -3,8 +3,8 @@ import { PieChart, Pie, Cell } from 'recharts';
 
 const RADIAN = Math.PI / 180;
 
-const cx = 75;
-const cy = 85;
+const cx = 80;
+const cy = 97.5;
 const iR = 32.5;
 const oR = 40;
 

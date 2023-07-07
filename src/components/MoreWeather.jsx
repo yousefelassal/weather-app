@@ -86,7 +86,7 @@ const MoreWeather = ({ weather }) => {
                         <>
                             {dataDisplay[key].rainChart}
                             <motion.h3  key={rainText}
-                                className="absolute top-[3.6rem] left-[3.3rem] grid place-items-center text-center text-sm font-semibold"
+                                className="absolute top-[3.6rem] left-[3.585rem] grid place-items-center text-center text-sm font-semibold"
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
