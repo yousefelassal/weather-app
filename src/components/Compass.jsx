@@ -22,9 +22,9 @@ const Compass = ({ dir }) => {
     }
     return (
         <div className="relative">
-        <div className="flex justify-between gap-4 p-1 items-center text-sm font-thin h-20 w-20 rounded-full outline-dashed outline-[0.2px] outline-[#25629Dcc] outline-offset-2 border-dashed border-[0.2px] border-[#25629Dcc]">
+        <div className="flex justify-between p-1 items-center text-sm font-thin h-20 w-20 rounded-full outline-dashed outline-[0.2px] outline-[#25629Dcc] outline-offset-2 border-dashed border-[0.2px] border-[#25629Dcc]">
             <h2>W</h2>
-            <div className="flex flex-col justify-between gap-10 items-center">
+            <div className="flex flex-col -ml-[0.35rem] justify-between gap-10 items-center">
                 <h2>N</h2>
                 <h2>S</h2>
             </div>
@@ -33,7 +33,7 @@ const Compass = ({ dir }) => {
             <motion.div
                 animate={{ rotate: compassDir[dir] }}
                 transition={{ duration: 1 }}
-                className="flex absolute top-4 left-5 justify-center items-center w-12 h-12"
+                className="flex absolute top-4 left-4 justify-center items-center w-12 h-12"
                 style={{
                     color: '#25629Dcc',
                 }}

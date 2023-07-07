@@ -11,11 +11,11 @@ export default class Example extends PureComponent {
         { name: 'Group B', value: 100-this.props.value },
     ];
     return (
-      <PieChart width={100} height={100} onMouseEnter={this.onPieEnter}>
+      <PieChart width={175} height={175} onMouseEnter={this.onPieEnter}>
         <Pie
           data={data}
-          cx={40}
-          cy={50}
+          cx={75}
+          cy={85}
           innerRadius={32.5}
           outerRadius={40}
           fill="#8884d8"
